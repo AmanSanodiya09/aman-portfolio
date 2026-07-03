@@ -1,0 +1,913 @@
+/* ========================================= */
+/* GLOBAL SETTINGS */
+/* ========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* Premium animated background */
+body{
+    font-family:'Poppins',sans-serif;
+
+    background: linear-gradient(
+        -45deg,
+        #020617,
+        #07142d,
+        #0f172a,
+        #001f3f,
+        #081b29
+    );
+
+    background-size:500% 500%;
+    animation:bgMove 18s ease infinite;
+
+    color:white;
+    line-height:1.6;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* animated gradient */
+@keyframes bgMove{
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+}
+
+
+/* ========================================= */
+/* FLOATING GLOW BACKGROUND */
+/* add <div class="bg-glow"></div> after body */
+/* ========================================= */
+
+.bg-glow{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-1;
+    pointer-events:none;
+}
+
+.bg-glow::before,
+.bg-glow::after{
+    content:"";
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    filter:blur(130px);
+
+    animation:floatGlow 10s infinite alternate ease-in-out;
+}
+
+/* left glow */
+.bg-glow::before{
+    background:#00e5ff20;
+    top:-120px;
+    left:-100px;
+}
+
+/* right glow */
+.bg-glow::after{
+    background:#7c3aed20;
+    bottom:-120px;
+    right:-100px;
+}
+
+@keyframes floatGlow{
+    from{
+        transform:translateY(0px);
+    }
+
+    to{
+        transform:translateY(80px);
+    }
+}
+
+
+/* ========================================= */
+/* NAVBAR */
+/* ========================================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:22px 80px;
+
+    background:rgba(255,255,255,0.06);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,0.08);
+
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+/* logo */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+/* logo image */
+.logo img{
+    width:70px;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+/* glow effect */
+.logo img:hover{
+    transform:scale(1.08);
+    filter:drop-shadow(0 0 10px #00e5ff);
+}
+
+/* premium text */
+.logo span{
+
+    font-family:'Poppins', sans-serif;
+
+    font-size:28px;
+
+    font-weight:800;          /* extra bold */
+
+    letter-spacing:1.5px;
+
+    color:white;
+
+    text-transform:uppercase;
+
+    text-shadow:
+        0 0 8px rgba(0,229,255,0.35);
+
+    transition:0.3s;
+}
+
+/* hover */
+.logo span:hover{
+    color:#00e5ff;
+}
+
+/* nav */
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:35px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-weight:500;
+
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#00e5ff;
+}
+
+/* mobile */
+.menu-btn{
+    display:none;
+    font-size:30px;
+    cursor:pointer;
+}
+
+
+/* ========================================= */
+/* HERO SECTION */
+/* ========================================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:80px;
+    gap:40px;
+}
+
+/* left text */
+.hero-left{
+    width:55%;
+}
+
+.hero-left h3{
+    color:#00e5ff;
+    margin-bottom:10px;
+    font-size:22px;
+}
+
+.hero-left h1{
+    font-size:64px;
+    margin-bottom:10px;
+}
+
+.hero-left h1 span{
+    color:#00e5ff;
+}
+
+.hero-left h2{
+    font-size:30px;
+    color:#b8b8b8;
+    margin-bottom:20px;
+}
+
+.hero-left p{
+    max-width:600px;
+    margin-bottom:35px;
+    color:#d8d8d8;
+    font-size:17px;
+}
+
+
+/* ========================================= */
+/* PROFILE IMAGE */
+/* ========================================= */
+
+.hero-right img{
+    width:390px;
+
+    border-radius:22px;
+
+    box-shadow:
+        0 0 12px #00e5ff,
+        0 0 30px #00e5ff55;
+
+    animation:floatImage 3s ease-in-out infinite alternate;
+}
+
+/* floating profile image */
+@keyframes floatImage{
+
+    from{
+        transform:translateY(0px);
+    }
+
+    to{
+        transform:translateY(-12px);
+    }
+}
+
+
+/* ========================================= */
+/* BUTTONS */
+/* ========================================= */
+
+.hero-buttons{
+    display:flex;
+    gap:20px;
+}
+
+.btn{
+    text-decoration:none;
+
+    padding:14px 30px;
+
+    border-radius:10px;
+
+    background:#00e5ff;
+    color:black;
+
+    font-weight:600;
+
+    transition:0.4s;
+}
+
+/* hover */
+.btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 0 15px #00e5ff55;
+}
+
+/* second button */
+.secondary{
+    background:transparent;
+
+    border:2px solid #00e5ff;
+
+    color:#00e5ff;
+}
+/* ========================================= */
+/* COMMON SECTION SETTINGS */
+/* ========================================= */
+
+section{
+    padding:100px 80px;
+}
+
+.section-title{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:60px;
+    color:#00e5ff;
+    letter-spacing:1px;
+}
+
+
+/* ========================================= */
+/* ABOUT SECTION */
+/* ========================================= */
+
+.about{
+    position:relative;
+}
+
+.about-card{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+
+    padding:45px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,0.05);
+
+    backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    box-shadow:0 0 20px rgba(0,229,255,0.08);
+
+    transition:0.4s;
+}
+
+.about-card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:
+      0 0 18px #00e5ff22;
+}
+
+.about-card p{
+    font-size:17px;
+    color:#d8d8d8;
+    line-height:1.9;
+    margin-bottom:18px;
+}
+
+
+/* ========================================= */
+/* SKILLS SECTION */
+/* premium card style */
+/* ========================================= */
+
+.skills{
+    text-align:center;
+}
+
+.skills h4{
+    color:#00e5ff;
+    margin-bottom:12px;
+    letter-spacing:2px;
+    font-size:18px;
+}
+
+.skill-slider{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:28px;
+    margin-top:55px;
+    flex-wrap:wrap;
+}
+
+/* skill cards */
+.skill-card{
+    width:220px;
+    height:250px;
+
+    padding:30px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,0.06);
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.15);
+
+    transition:0.45s ease;
+}
+
+/* highlighted center card */
+.skill-card.active{
+    transform:scale(1.08);
+
+    box-shadow:
+      0 0 20px #00e5ff33;
+}
+
+/* skill icon */
+.skill-card img{
+    width:90px;
+    height:90px;
+    object-fit:contain;
+
+    margin-bottom:35px;
+}
+
+/* skill name */
+.skill-card h3{
+    font-size:24px;
+    color:white;
+    font-weight:600;
+}
+
+/* hover effect */
+.skill-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:
+      0 0 18px #00e5ff33,
+      0 0 30px #00e5ff11;
+}
+
+/* ============================ */
+/* PROJECT SECTION */
+/* ============================ */
+/* PROJECTS */
+
+.projects{
+    text-align:center;
+}
+
+.section-subtitle{
+    color:#9ca3af;
+    margin-top:-30px;
+    margin-bottom:50px;
+    font-size:18px;
+}
+
+/* container */
+.project-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(450px,1fr));
+    gap:35px;
+}
+
+/* base card */
+.project-card{
+    position:relative;
+
+    padding:35px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,0.04);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    text-align:left;
+
+    transition:all 0.4s ease;
+
+    overflow:hidden;
+}
+
+/* left neon border */
+.project-card::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    height:100%;
+    width:4px;
+}
+
+/* portfolio purple */
+.portfolio-card::before{
+    background:linear-gradient(#8b5cf6,#9333ea);
+}
+
+/* atm green */
+.atm-card::before{
+    background:linear-gradient(#10b981,#14f195);
+}
+
+/* icon */
+.project-icon{
+    width:55px;
+    height:55px;
+
+    border-radius:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+
+    margin-bottom:22px;
+
+    background:rgba(255,255,255,0.06);
+}
+
+/* headings */
+.project-card h3{
+    color:white;
+    font-size:32px;
+    margin-bottom:14px;
+}
+
+/* text */
+.project-card p{
+    color:#cbd5e1;
+    font-size:17px;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+/* tags */
+.project-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+/* common tag */
+.tag{
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:500;
+}
+
+/* colors */
+
+.html{
+    background:rgba(249,115,22,0.15);
+    color:#fb923c;
+}
+
+.css{
+    background:rgba(59,130,246,0.15);
+    color:#60a5fa;
+}
+
+.js{
+    background:rgba(234,179,8,0.15);
+    color:#facc15;
+}
+
+.responsive{
+    background:rgba(139,92,246,0.15);
+    color:#c084fc;
+}
+
+.java{
+    background:rgba(239,68,68,0.15);
+    color:#f87171;
+}
+
+.oop{
+    background:rgba(59,130,246,0.15);
+    color:#60a5fa;
+}
+
+.encap{
+    background:rgba(16,185,129,0.15);
+    color:#34d399;
+}
+
+.cli{
+    background:rgba(139,92,246,0.15);
+    color:#a78bfa;
+}
+
+/* hover */
+
+.project-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 0 25px rgba(0,229,255,0.18);
+
+    border-color:rgba(0,229,255,0.4);
+}
+/* ========================================= */
+/* CERTIFICATIONS SECTION */
+/* premium flip cards */
+/* ========================================= */
+
+.certifications{
+    text-align:center;
+}
+
+.cert-container{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+    gap:35px;
+    margin-top:55px;
+}
+
+/* outer card */
+.flip-card{
+    background:transparent;
+    width:100%;
+    height:230px;
+    perspective:1000px;
+}
+
+/* inner rotating */
+.flip-card-inner{
+    position:relative;
+    width:100%;
+    height:100%;
+
+    transition:transform 0.8s;
+    transform-style:preserve-3d;
+}
+
+/* rotate */
+.flip-card:hover .flip-card-inner{
+    transform:rotateY(180deg);
+}
+
+/* front and back */
+.flip-card-front,
+.flip-card-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+
+    border-radius:18px;
+    overflow:hidden;
+
+    backface-visibility:hidden;
+
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+/* front side */
+.flip-card-front{
+    background:rgba(255,255,255,0.05);
+}
+
+/* certificate image */
+.flip-card-front img{
+    width:100%;
+    height:100%;
+
+    object-fit: contain;   /* full image visible */
+
+    background:white;      /* good for certificate */
+    padding:6px;
+}
+/* back side */
+.flip-card-back{
+    background:#06111f;
+    color:white;
+
+    transform:rotateY(180deg);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+.flip-card-back h3{
+    color:#00e5ff;
+    margin-bottom:12px;
+    font-size:22px;
+}
+
+.flip-card-back p{
+    color:#d8d8d8;
+    line-height:1.6;
+}
+
+/* hover glow */
+.flip-card:hover{
+    box-shadow:
+      0 0 18px #00e5ff33;
+}
+
+
+/* ========================================= */
+/* CONTACT SECTION */
+/* ========================================= */
+
+/* social icons contact */
+
+.social-contact{
+    display:flex;
+    justify-content:center;
+    gap:50px;
+    margin-top:35px;
+    flex-wrap:wrap;
+}
+
+.social-item{
+    text-align:center;
+    transition:0.3s;
+}
+
+/* icon image */
+.social-item img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+
+    transition:0.3s;
+}
+
+/* hover effect */
+.social-item img:hover{
+    transform:scale(1.1);
+
+    filter:drop-shadow(0 0 10px #00e5ff);
+}
+
+/* text below icon */
+.social-item p{
+    margin-top:10px;
+    color:#d8d8d8;
+    font-size:16px;
+}
+
+/* ========================================= */
+/* FOOTER */
+/* ========================================= */
+
+footer{
+    text-align:center;
+    padding:35px;
+
+    border-top:1px solid rgba(255,255,255,0.08);
+
+    color:#aaaaaa;
+    font-size:15px;
+}
+
+
+/* ========================================= */
+/* REVEAL ANIMATION */
+/* ========================================= */
+
+.hidden{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 1s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* ========================================= */
+/* MOBILE NAV */
+/* ========================================= */
+
+.nav-links.active{
+    display:flex;
+    position:absolute;
+
+    top:80px;
+    right:20px;
+
+    flex-direction:column;
+
+    background:#06111f;
+
+    padding:25px;
+    border-radius:14px;
+
+    width:220px;
+
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
+
+@media(max-width:950px){
+
+    /* hero */
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding:60px 25px;
+    }
+
+    .hero-left{
+        width:100%;
+    }
+
+    .hero-left h1{
+        font-size:42px;
+    }
+
+    .hero-left h2{
+        font-size:22px;
+    }
+
+    .hero-right img{
+        width:260px;
+    }
+
+    /* navbar */
+    .navbar{
+        padding:20px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    /* sections */
+    section{
+        padding:80px 25px;
+    }
+
+    /* buttons */
+    .hero-buttons{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .contact-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    /* cards */
+    .skill-card{
+        width:100%;
+        max-width:260px;
+    }
+}
+
+
+/* ========================================= */
+/* SCROLLBAR */
+/* ========================================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#06111f;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00e5ff;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#00c8e0;
+}
